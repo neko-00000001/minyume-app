@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>みんゆめ - 夢を投稿</title>
+</head>
+<body>
+    <h1>🌙 みんゆめ</h1>
+    <p>最近見た夢を自由に書いてください。</p>
+
+    <form th:action="@{/submit}" th:object="${dream}" method="post">
+        <textarea th:field="*{content}" rows="6" cols="50" placeholder="夢の内容をここに入力..."></textarea><br><br>
+        <button type="submit">投稿する</button>
+    </form>
+</body>
+</html>
