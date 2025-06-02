@@ -3,6 +3,8 @@ package com.example.minyumeapp.model;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,6 +22,9 @@ public class Dream {
     private String content;
 
     private LocalDateTime postedAt;
+
+    @Enumerated(EnumType.STRING)
+    private Emotion emotion;
 
     public Dream() {
         this.postedAt = LocalDateTime.now();
