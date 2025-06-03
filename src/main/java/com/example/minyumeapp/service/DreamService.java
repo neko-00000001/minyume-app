@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class DreamService {
@@ -24,4 +25,9 @@ public class DreamService {
     public List<Dream> getDreamsFromLast24Hours() {
         return dreamRepository.findByPostedAtAfter(LocalDateTime.now().minusHours(24));
     }
+
+    public List<Dream> getAllDreams() {
+    return dreamRepository.findAll(Sort.by(Sort.Direction.DESC, "postedAt"));
+}
+
 }

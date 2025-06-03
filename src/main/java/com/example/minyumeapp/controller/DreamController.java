@@ -2,6 +2,9 @@ package com.example.minyumeapp.controller;
 
 import com.example.minyumeapp.model.Dream;
 import com.example.minyumeapp.service.DreamService;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,4 +33,12 @@ public class DreamController {
         model.addAttribute("count", count);
         return "result"; // templates/result.html を表示
     }
+
+    @GetMapping("/dreams")
+    public String listDreams(Model model) {
+        List<Dream> dreams = dreamService.getAllDreams();
+        model.addAttribute("dreams", dreams);
+        return "dreams"; // → templates/dreams.html を表示
+    }
+
 }
