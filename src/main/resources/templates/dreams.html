@@ -11,7 +11,7 @@
         <li th:each="dream : ${dreams}">
             <p>
                 <strong th:text="${dream.emotion}">感情</strong> |
-                <span th:text="${#dates.format(dream.postedAt, 'yyyy-MM-dd HH:mm')}">日時</span><br>
+                <span th:text="${#temporals.format(dream.postedAt, 'yyyy-MM-dd HH:mm')}">日時</span><br>
                 <span th:text="${dream.content}">夢の内容</span>
             </p>
             <hr>
