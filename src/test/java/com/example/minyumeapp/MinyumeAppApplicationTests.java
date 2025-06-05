@@ -1,4 +1,4 @@
-package com.example.minyume_app;
+package com.example.minyumeapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
