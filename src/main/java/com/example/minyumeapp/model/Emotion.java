@@ -1,10 +1,15 @@
 package com.example.minyumeapp.model;
 
 public enum Emotion {
-    HAPPY,
-    SAD,
-    SCARY,
-    FUNNY,
-    STRANGE,
-    PEACEFUL
+    /** 喜 - Joy */
+    JOY,
+
+    /** 怒 - Anger */
+    ANGER,
+
+    /** 哀 - Sorrow */
+    SORROW,
+
+    /** 楽 - Pleasure */
+    PLEASURE
 }
