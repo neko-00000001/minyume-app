@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>みんなの夢一覧 - みんゆめ</title>
+</head>
+<body>
+    <h1>みんなの夢 🌙</h1>
+
+    <ul>
+        <li th:each="dream : ${dreams}">
+            <p>
+                <strong th:text="${dream.emotion}">感情</strong> |
+                <span th:text="${#temporals.format(dream.postedAt, 'yyyy-MM-dd HH:mm')}">日時</span><br>
+                <span th:text="${dream.content}">夢の内容</span>
+            </p>
+            <hr>
+        </li>
+    </ul>
+
+    <a th:href="@{/}">夢を投稿する</a>
+</body>
+</html>
