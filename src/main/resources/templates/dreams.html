@@ -7,23 +7,27 @@
 <body>
     <h1>みんなの夢 🌙</h1>
 
-    <ul>
-        <li th:each="dream : ${dreams}">
-            <p>
-                <strong>
-                    <span th:switch="${dream.emotion}">
-                        <span th:case="'JOY'">🙂</span>
-                        <span th:case="'ANGER'">😡</span>
-                        <span th:case="'SORROW'">😭</span>
-                        <span th:case="'PLEASURE'">🤩</span>
-                    </span>
-                </strong> |
-                <span th:text="${#temporals.format(dream.postedAt, 'yyyy-MM-dd HH:mm')}">日時</span><br>
-                <span th:text="${dream.content}">夢の内容</span>
-            </p>
-            <hr>
-        </li>
-    </ul>
+    <div th:each="emotion : ${T(com.example.minyumeapp.model.Emotion).values()}">
+        <div th:if="${#lists.isNotEmpty(dreamsByEmotion[emotion])}">
+            <h2>
+                <span th:switch="${emotion}">
+                    <span th:case="'JOY'">🙂</span>
+                    <span th:case="'ANGER'">😡</span>
+                    <span th:case="'SORROW'">😭</span>
+                    <span th:case="'PLEASURE'">🤩</span>
+                </span>
+            </h2>
+            <ul>
+                <li th:each="dream : ${dreamsByEmotion[emotion]}">
+                    <p>
+                        <span th:text="${#temporals.format(dream.postedAt, 'yyyy-MM-dd HH:mm')}">日時</span><br>
+                        <span th:text="${dream.content}">夢の内容</span>
+                    </p>
+                    <hr>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <a th:href="@{/}">夢を投稿する</a>
 </body>

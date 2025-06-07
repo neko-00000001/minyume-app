@@ -1,9 +1,13 @@
 package com.example.minyumeapp.controller;
 
 import com.example.minyumeapp.model.Dream;
+import com.example.minyumeapp.model.Emotion;
 import com.example.minyumeapp.service.DreamService;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +41,16 @@ public class DreamController {
     @GetMapping("/dreams")
     public String listDreams(Model model) {
         List<Dream> dreams = dreamService.getAllDreams();
-        model.addAttribute("dreams", dreams);
+
+        Map<Emotion, List<Dream>> dreamsByEmotion = new LinkedHashMap<>();
+        for (Emotion emotion : Emotion.values()) {
+            dreamsByEmotion.put(emotion, new ArrayList<>());
+        }
+        for (Dream dream : dreams) {
+            dreamsByEmotion.get(dream.getEmotion()).add(dream);
+        }
+
+        model.addAttribute("dreamsByEmotion", dreamsByEmotion);
         return "dreams"; // → templates/dreams.html を表示
     }
 
