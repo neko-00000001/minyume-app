@@ -8,7 +8,7 @@
     <h1>みんなの夢 🌙</h1>
 
     <div th:each="emotion : ${T(com.example.minyumeapp.model.Emotion).values()}">
-        <div th:if="${#lists.isNotEmpty(dreamsByEmotion[emotion])}">
+        <div th:if="${!#lists.isEmpty(dreamsByEmotion[emotion])}">
             <h2>
                 <span th:switch="${emotion}">
                     <span th:case="'JOY'">🙂</span>
