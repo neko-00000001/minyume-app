@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>みんゆめ - 夢を投稿</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
-    <h1>🌙 みんゆめ</h1>
-    <p>最近見た夢を自由に書いてください。</p>
+    <div class="content">
+        <h1>🌙 みんゆめ</h1>
+        <p>最近見た夢を自由に書いてください。</p>
 
-    <form th:action="@{/submit}" th:object="${dream}" method="post">
-        <textarea th:field="*{content}" rows="6" cols="50" placeholder="夢の内容をここに入力..."></textarea><br><br>
+        <form th:action="@{/submit}" th:object="${dream}" method="post">
+            <textarea th:field="*{content}" rows="6" cols="50" placeholder="夢の内容をここに入力..."></textarea><br><br>
 
         <label>夢の印象：</label>
         <select th:field="*{emotion}">
@@ -19,7 +21,8 @@
             <option th:value="PLEASURE">🤩</option>
         </select><br><br>
 
-        <button type="submit">投稿する</button>
-    </form>
+            <button type="submit">投稿する</button>
+        </form>
+    </div>
 </body>
 </html>
