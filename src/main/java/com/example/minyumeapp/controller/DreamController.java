@@ -33,7 +33,7 @@ public class DreamController {
     @PostMapping("/submit")
     public String submitDream(@ModelAttribute Dream dream, Model model) {
         dreamService.saveDream(dream); // 投稿内容を保存
-        int count = dreamService.getDreamsFromLast24Hours().size(); // 24時間以内の投稿数
+        int count = dreamService.getAllDreams().size(); // 投稿数をすべてカウント
         model.addAttribute("count", count);
         return "result"; // templates/result.html を表示
     }
