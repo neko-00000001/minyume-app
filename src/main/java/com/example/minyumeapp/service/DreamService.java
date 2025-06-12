@@ -22,10 +22,6 @@ public class DreamService {
         dreamRepository.save(dream);
     }
 
-    public List<Dream> getDreamsFromLast24Hours() {
-        return dreamRepository.findByPostedAtAfter(LocalDateTime.now().minusHours(24));
-    }
-
     public List<Dream> getAllDreams() {
     return dreamRepository.findAll(Sort.by(Sort.Direction.DESC, "postedAt"));
 }
