@@ -43,9 +43,11 @@ public class DreamController {
         List<Dream> dreams = dreamService.getAllDreams();
 
         Map<Emotion, List<Dream>> dreamsByEmotion = new LinkedHashMap<>();
+        // 各感情ごとに空のリストを初期化
         for (Emotion emotion : Emotion.values()) {
             dreamsByEmotion.put(emotion, new ArrayList<>());
         }
+        // 各夢を感情ごとにリストに追加
         for (Dream dream : dreams) {
             dreamsByEmotion.get(dream.getEmotion()).add(dream);
         }
